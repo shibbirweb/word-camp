@@ -1,2 +1,2 @@
-# word-camp
+# Word Camp
 Word Store Application
