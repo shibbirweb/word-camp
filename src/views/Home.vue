@@ -5,7 +5,7 @@
         <!-- Navbar End -->
 
         <!-- Hero Area Start -->
-        <section>
+        <section class="hero_section">
             <div class="container">
                 <!-- Hero Search Component -->
                 <hero-search-component />
@@ -46,9 +46,15 @@ export default {
         HeroSearchComponent,
         WordListComponent,
         FooterComponent
-    },
-    mounted() {
-        console.log(process.env.VUE_APP_MY_VALUE);
     }
 };
 </script>
+
+<style lang="scss" scoped>
+.hero_section {
+    background-image: url(../assets/images/hero_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+</style>

@@ -1,0 +1,10 @@
+@include media-breakpoint-down(md) {
+  .HeroSearchComponent {
+    .search-bar {
+      border-radius: 20px !important;
+      .form-group {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

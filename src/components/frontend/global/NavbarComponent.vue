@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">{{ navTitle }}</a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -20,9 +20,9 @@
                             >Home</a
                         >
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
-                    </li>
+                    </li> -->
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -36,7 +36,12 @@
 
 <script>
 export default {
-    name: "NavbarComponent"
+    name: "NavbarComponent",
+    computed: {
+        navTitle() {
+            return this.$env.VUE_APP_SITE_TITLE;
+        }
+    }
 };
 </script>
 
