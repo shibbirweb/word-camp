@@ -13,6 +13,25 @@
         </section>
         <!-- Hero Area End -->
 
+        <!-- Search Summary Start -->
+        <section class="search_summary">
+            <div class="stick_handler">
+                <span class="stick one"></span>
+                <span class="stick two"></span>
+                <span class="stick three"></span>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <h3>Found 3 Words</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Search Summary End -->
+
         <!-- Word Lists Start -->
         <section class="word_list_section py-3">
             <div class="container">
@@ -68,5 +87,78 @@ export default {
             rgba(174, 201, 196, 0.9500175070028011) 100%
         );
     background-attachment: fixed;
+}
+
+.search_summary {
+    background: rgb(236, 236, 236);
+    min-height: 300px;
+    position: relative;
+
+    $stick_width: 15px;
+    .stick_handler {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 48%;
+        .stick {
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            width: $stick_width;
+            box-sizing: border-box;
+            &.one {
+                left: -$stick_width;
+                background: linear-gradient(
+                    90deg,
+                    rgba(202, 155, 110, 1) 0%,
+                    rgba(190, 152, 96, 1) 100%
+                );
+                &::before {
+                    content: " ";
+                    height: 10%;
+                    border-right: 2px solid #997449;
+                    position: absolute;
+                    top: 20%;
+                    border-top-left-radius: 50%;
+                    border-bottom-right-radius: 50%;
+                }
+                &::after {
+                    content: " ";
+                    height: 20%;
+                    border-right: 1px solid #997449;
+                    position: absolute;
+                    bottom: 20%;
+                    left: 30%;
+                    border-top-left-radius: 50%;
+                    border-bottom-right-radius: 50%;
+                }
+            }
+            &.two {
+                background: linear-gradient(
+                    90deg,
+                    rgba(154, 109, 63, 1) 0%,
+                    rgba(155, 107, 63, 1) 100%
+                );
+                &::after {
+                    content: " ";
+                    height: 20%;
+                    border-right: 2px solid #8b5d32;
+                    position: absolute;
+                    top: 40%;
+                    left: 30%;
+                    border-top-left-radius: 50%;
+                    border-bottom-right-radius: 50%;
+                }
+            }
+            &.three {
+                left: $stick_width;
+                background: linear-gradient(
+                    90deg,
+                    rgba(105, 61, 24, 1) 0%,
+                    rgba(105, 62, 26, 1) 100%
+                );
+            }
+        }
+    }
 }
 </style>
