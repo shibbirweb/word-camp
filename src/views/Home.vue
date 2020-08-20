@@ -14,7 +14,7 @@
         <!-- Hero Area End -->
 
         <!-- Word Lists Start -->
-        <section class="mt-5">
+        <section class="word_list_section py-3">
             <div class="container">
                 <!-- Word list component -->
                 <word-list-component />
@@ -52,9 +52,21 @@ export default {
 
 <style lang="scss" scoped>
 .hero_section {
-    background-image: url(../assets/images/hero_background.jpg);
+    background-color: #dfe7ea;
+    background-image: url(../assets/images/hero_background.jpg),
+        linear-gradient(207deg, #dfe7ea 0%, #dbc7ce 100%);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+.word_list_section {
+    background-color: rgb(203, 220, 210);
+    background-image: url(../assets/images/word_background.jpg),
+        linear-gradient(
+            90deg,
+            rgba(203, 220, 210, 0.9500175070028011) 0%,
+            rgba(174, 201, 196, 0.9500175070028011) 100%
+        );
+    background-attachment: fixed;
 }
 </style>
