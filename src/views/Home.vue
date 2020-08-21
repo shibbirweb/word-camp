@@ -13,30 +13,29 @@
         </section>
         <!-- Hero Area End -->
 
-        <!-- Search Summary Start -->
+        <!-- Search Summary Start
         <section class="search_summary">
-            <div class="stick_handler">
+             <div class="stick_handler">
                 <span class="stick one"></span>
                 <span class="stick two"></span>
                 <span class="stick three"></span>
             </div>
+            <div class="container minimum_version">
+                <search-summary-component />
+            </div>
+        </section>
+        -- Search Summary End -->
+
+        <!-- Word Lists Start -->
+        <section class="word_list_section word_table py-3">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div>
-                            <h3>Found 3 Words</h3>
-                        </div>
+                        <p>Showing search results</p>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Search Summary End -->
-
-        <!-- Word Lists Start -->
-        <section class="word_list_section py-3">
-            <div class="container">
-                <!-- Word list component -->
-                <word-list-component />
+                <!-- Word table component -->
+                <word-table-component :words="words" />
             </div>
         </section>
         <!-- Word Lists End -->
@@ -56,15 +55,21 @@
 // @ is an alias to /src
 import NavbarComponent from "@/components/frontend/global/NavbarComponent";
 import HeroSearchComponent from "@/components/frontend/home/header/HeroSearchComponent";
-import WordListComponent from "@/components/frontend/home/sections/word/list/WordListComponent";
+// import SearchSummaryComponent from "@/components/frontend/home/sections/search/SearchSummaryComponent";
+import WordTableComponent from "@/components/frontend/home/sections/word/table/WordTableComponent";
 import FooterComponent from "@/components/frontend/home/footer/FooterComponent";
+import { mapState } from "vuex";
 export default {
     name: "Home",
     components: {
         NavbarComponent,
         HeroSearchComponent,
-        WordListComponent,
+        /* SearchSummaryComponent, */
+        WordTableComponent,
         FooterComponent
+    },
+    computed: {
+        ...mapState(["words"])
     }
 };
 </script>
@@ -72,27 +77,39 @@ export default {
 <style lang="scss" scoped>
 .hero_section {
     background-color: #dfe7ea;
-    background-image: url(../assets/images/hero_background.jpg),
-        linear-gradient(207deg, #dfe7ea 0%, #dbc7ce 100%);
+    background-image: /* url(../assets/images/hero_background.jpg), */ linear-gradient(
+        180deg,
+        #97beeb 0%,
+        #dfe7ea 60%,
+        #fff 100%
+    );
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 .word_list_section {
-    background-color: rgb(203, 220, 210);
-    background-image: url(../assets/images/word_background.jpg),
-        linear-gradient(
-            90deg,
-            rgba(203, 220, 210, 0.9500175070028011) 0%,
-            rgba(174, 201, 196, 0.9500175070028011) 100%
-        );
-    background-attachment: fixed;
+    &.word_list {
+        background-color: rgb(203, 220, 210);
+        background-image: url(../assets/images/word_background.jpg),
+            linear-gradient(
+                90deg,
+                rgba(203, 220, 210, 0.9500175070028011) 0%,
+                rgba(174, 201, 196, 0.9500175070028011) 100%
+            );
+    }
+    &.word_table {
+        background-color: rgb(91, 189, 235);
+        background-image: linear-gradient(180deg, #fff 0%, #edf2f8 100%);
+    }
 }
 
 .search_summary {
-    background: rgb(236, 236, 236);
-    min-height: 300px;
+    background-color: rgb(236, 236, 236);
+    background-image: linear-gradient(171deg, #d4b8c2 0%, #dfe7ea 100%);
     position: relative;
+
+    .minimum_version {
+    }
 
     $stick_width: 15px;
     .stick_handler {

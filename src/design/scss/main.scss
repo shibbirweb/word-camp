@@ -1,7 +1,8 @@
-// custom scss
-@import "./custom";
+// custom bootstrap scss
+@import "./custom-bootstrap";
 // Bootstrap scss
 @import "bootstrap/scss/bootstrap";
-
+// custom global design
+@import "./custom";
 // responsive scss
 @import "./responsive";

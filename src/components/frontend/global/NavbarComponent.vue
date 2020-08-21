@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg sticky-top navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">{{ navTitle }}</a>
             <button
@@ -45,4 +45,22 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+nav {
+    background-color: #b2d2ff49;
+    background-image: linear-gradient(#ffffff9f 0%, #c1d6fc91 100%);
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    button.navbar-hamburger-button {
+        &:focus {
+            box-shadow: none; /* hide box shadow in navbar hamburger icon */
+        }
+    }
+}
+</style>

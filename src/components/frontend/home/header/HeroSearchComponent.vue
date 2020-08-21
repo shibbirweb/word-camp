@@ -4,7 +4,7 @@
             <div>
                 <h1 class="display-6 font-weight-bold">{{ greetingText }}</h1>
             </div>
-            <div class="search-bar mt-5 p-3 p-md-1 pl-lg-4">
+            <div class="search-bar mt-5 p-3 p-md-1 pl-md-2 pl-lg-4">
                 <form>
                     <div class="row">
                         <div class="form-group col-md-9">
@@ -27,6 +27,12 @@
                         </div>
                     </div>
                 </form>
+            </div>
+            <div class="search-result-summary hide-summary">
+                <div class="stick"></div>
+                <div class="text">
+                    Found 3 words
+                </div>
             </div>
         </div>
     </div>
@@ -52,11 +58,40 @@ export default {
             background: white;
             border-radius: 10rem;
             box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
-
+            position: relative;
+            z-index: 9;
             .form-control {
                 &:focus {
                     box-shadow: none;
                 }
+            }
+        }
+        .search-result-summary {
+            position: relative;
+            text-align: center;
+            transition-property: all;
+            transition-duration: 0.1s;
+            transition-timing-function: linear;
+            &.hide-summary {
+                margin-top: -46px;
+            }
+            .stick {
+                position: absolute;
+                display: block;
+                background: white;
+                width: 10px;
+                left: 49%;
+                height: 12px;
+                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
+            }
+            .text {
+                color: #444;
+                margin-top: 12px;
+                background: white;
+                display: inline-block;
+                padding: 5px 16px;
+                border-radius: 8px;
+                box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15);
             }
         }
     }
