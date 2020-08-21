@@ -12,7 +12,7 @@
                                 type="text"
                                 class="form-control border-0 shadow-0"
                                 name="search"
-                                placeholder="Find your word..."
+                                placeholder="Find my word..."
                                 autocomplete="off"
                                 autofocus
                             />

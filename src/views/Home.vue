@@ -41,8 +41,8 @@
         <!-- Word Lists End -->
 
         <!-- Footer Start -->
-        <footer>
-            <div class="container my-3">
+        <footer class="footer-area">
+            <div class="container mp-3">
                 <!-- Footer Component -->
                 <footer-component />
             </div>
@@ -177,5 +177,10 @@ export default {
             }
         }
     }
+}
+
+.footer-area {
+    background-color: #dfebf9;
+    background-image: linear-gradient(#edf2f8 0%, #c1deff 100%);
 }
 </style>

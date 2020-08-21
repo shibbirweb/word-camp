@@ -47,8 +47,8 @@ export default {
 
 <style lang="scss" scoped>
 nav {
-    background-color: #b2d2ff49;
-    background-image: linear-gradient(#ffffff9f 0%, #c1d6fc91 100%);
+    background-color: #4ac6ff6b;
+    background-image: linear-gradient(#ffffff63 0%, #c1d6fc80 100%);
     -webkit-backdrop-filter: blur(1rem);
     backdrop-filter: blur(1rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
