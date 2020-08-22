@@ -11,7 +11,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr v-for="n in 100" :key="n">
+                    <tr v-for="n in 5" :key="n">
                         <td>1</td>
                         <td>Test</td>
                         <td>পরীক্ষা</td>
