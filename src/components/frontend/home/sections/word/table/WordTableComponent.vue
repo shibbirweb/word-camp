@@ -11,23 +11,11 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr v-for="n in 5" :key="n">
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>পরীক্ষা</td>
-                        <td>12 Jun 2020</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>Exam</td>
-                        <td>12 Jun 2020</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>Exam</td>
-                        <td>12 Jun 2020</td>
+                    <tr v-for="(word, index) in words" :key="index">
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ word.en }}</td>
+                        <td>{{ word.bn }}</td>
+                        <td>{{ word.createdAt.toDateString() }}</td>
                     </tr>
                 </tbody>
             </table>

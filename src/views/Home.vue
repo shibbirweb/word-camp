@@ -39,7 +39,7 @@
                 <!-- Word table component -->
                 <word-table-component :words="words" />
 
-                <pagination-component />
+                <pagination-component :data="words" />
             </div>
         </section>
         <!-- Word Lists End -->
