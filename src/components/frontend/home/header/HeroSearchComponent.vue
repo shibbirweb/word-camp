@@ -5,13 +5,13 @@
                 <h1 class="display-6 font-weight-bold">{{ greetingText }}</h1>
             </div>
             <div class="search-bar mt-5 p-3 p-md-1 pl-md-2 pl-lg-4">
-                <form>
+                <form @submit.prevent="formSubmitHandler">
                     <div class="row">
                         <div class="form-group col-md-9">
                             <input
                                 type="text"
                                 class="form-control border-0 shadow-0"
-                                name="search"
+                                v-model="searchKeyword"
                                 placeholder="Find my word..."
                                 autocomplete="off"
                                 autofocus
@@ -28,10 +28,17 @@
                     </div>
                 </form>
             </div>
-            <div class="search-result-summary hide-summary">
+            <div
+                class="search-result-summary"
+                :class="{ 'hide-summary': !searchKeyword }"
+            >
                 <div class="stick"></div>
                 <div class="text">
-                    Found 3 words
+                    Found
+                    {{ filteredWords.length }} word<span
+                        v-if="filteredWords.length > 1"
+                        >s</span
+                    >
                 </div>
             </div>
         </div>
@@ -39,11 +46,26 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
     name: "HeroSearchComponent",
     computed: {
+        ...mapGetters(["filteredWords"]),
         greetingText() {
             return "Welcome to " + this.$env.VUE_APP_SITE_TITLE + "...";
+        },
+        searchKeyword: {
+            get() {
+                return this.$store.state.searchKeyword;
+            },
+            set(value) {
+                this.$store.commit("updateSearchText", value);
+            }
+        }
+    },
+    methods: {
+        formSubmitHandler() {
+            this.$store.commit("updateSearchText", this.searchKeyword);
         }
     }
 };

@@ -1,4 +1,6 @@
 export default {
+    searchKeyword: '',
+    lastSyncedAt: new Date(),
     words: [
         {
             en: 'Book 1',

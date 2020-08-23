@@ -1,11 +1,8 @@
 <template>
-    <div class="row PaginationComponent">
+    <div class="row PaginationComponent" v-if="data.length">
         <div class="col-12">
-            <p>{{ currentPage }}</p>
-        </div>
-        <div class="col-12">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
+            <nav aria-label="Page navigation ">
+                <ul class="pagination pagination-sm justify-content-center">
                     <li
                         class="page-item"
                         :class="{ disabled: currentPage <= 1 }"
@@ -16,7 +13,7 @@
                             tabindex="-1"
                             aria-disabled="true"
                             @click.prevent="currentPage--"
-                            >Previous</a
+                            >Prev</a
                         >
                     </li>
 
@@ -56,7 +53,7 @@
 
 <script>
 export default {
-    name: 'PaginationComponent',
+    name: "PaginationComponent",
     props: {
         data: {
             type: Array,
@@ -72,68 +69,73 @@ export default {
         },
         serialkey: {
             type: String,
-            default: 'serialKey'
+            default: "serialKey"
         },
         dotChars: {
             type: String,
-            default: '...'
+            default: "..."
         }
     },
     watch: {
         currentPage: {
-            handler: 'pageChangeHandler',
+            handler: "pageChangeHandler",
             immediate: true
+        },
+        data: {
+            handler: "dataChangeHandler",
+            immediate: true,
+            deep: true
         }
     },
     computed: {
-        totalLength () {
-            return this.data.length
+        totalLength() {
+            return this.data.length;
         },
-        totalPage () {
-            return Math.ceil(this.totalLength / parseFloat(this.paginate))
+        totalPage() {
+            return Math.ceil(this.totalLength / parseFloat(this.paginate));
         },
-        beforeCurrentPageNumbers () {
-            return this.currentPage - this.eachSide
+        beforeCurrentPageNumbers() {
+            return this.currentPage - this.eachSide;
         },
-        aftarCurrentPageNumbers () {
-            return this.currentPage + this.eachSide
+        aftarCurrentPageNumbers() {
+            return this.currentPage + this.eachSide;
         },
-        renderPageNumbers () {
-            const totalNumber = []
+        renderPageNumbers() {
+            const totalNumber = [];
             for (let i = 1; i <= this.totalPage; i++) {
                 if (this.addDot(i)) {
-                    totalNumber.push(this.dotChars)
-                    continue
+                    totalNumber.push(this.dotChars);
+                    continue;
                 }
 
                 if (this.addPage(i)) {
-                    totalNumber.push(i)
-                    continue
+                    totalNumber.push(i);
+                    continue;
                 }
             }
-            return totalNumber
+            return totalNumber;
         }
     },
     data: () => ({
         currentPage: 1
     }),
     methods: {
-        addPage (pageNumber) {
+        addPage(pageNumber) {
             if (pageNumber === 1 || pageNumber === this.totalPage) {
-                return true
+                return true;
             }
 
             if (
                 pageNumber >= this.beforeCurrentPageNumbers &&
                 pageNumber <= this.aftarCurrentPageNumbers
             ) {
-                return true
+                return true;
             }
-            return false
+            return false;
         },
-        addDot (pageNumber) {
+        addDot(pageNumber) {
             if (pageNumber === 1 || pageNumber === this.totalPage) {
-                return false
+                return false;
             }
 
             if (
@@ -141,23 +143,27 @@ export default {
                 (pageNumber === this.aftarCurrentPageNumbers + 1 &&
                     pageNumber < this.totalPage)
             ) {
-                return true
+                return true;
             }
-            return false
+            return false;
         },
-        pageChangeHandler (currentPage) {
-            const start = this.paginate * (currentPage - 1)
-            const end = start + this.paginate
-            let serialkey = start
+        pageChangeHandler() {
+            const start = this.paginate * (this.currentPage - 1);
+            const end = start + this.paginate;
+            let serialkey = start;
             const data = this.data.slice(start, end).map(datum => {
-                datum[this.serialkey] = ++serialkey
-                return datum
-            })
+                datum[this.serialkey] = ++serialkey;
+                return datum;
+            });
 
-            this.$emit('paginatedData', data)
+            this.$emit("paginatedData", data);
+        },
+        dataChangeHandler() {
+            this.currentPage = 1;
+            this.pageChangeHandler();
         }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>

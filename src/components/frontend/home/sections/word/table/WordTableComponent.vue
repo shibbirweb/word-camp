@@ -1,6 +1,6 @@
 <template>
     <div class="row WordTableComponent">
-        <div class="col-12">
+        <div class="col-12 table-responsive-md">
             <table class="table table-striped border-sky-blue table-bordered">
                 <thead class="table-info text-center">
                     <tr>
@@ -11,7 +11,12 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr v-for="(word, index) in words" :key="index">
+                    <tr v-if="words.length === 0">
+                        <td colspan="4" class="text-center text-secondary">
+                            No word found
+                        </td>
+                    </tr>
+                    <tr v-else v-for="(word, index) in words" :key="index">
                         <td>{{ word.serialKey }}</td>
                         <td>{{ word.en }}</td>
                         <td>{{ word.bn }}</td>

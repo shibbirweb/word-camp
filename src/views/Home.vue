@@ -30,22 +30,33 @@
         <section class="word_list_section word_table py-3">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
-                        <p class="border-bottom border-secondary">
-                            Showing search results
+                    <div
+                        class="col-12 d-flex justify-content-between align-items-center my-2"
+                    >
+                        <p class="small m-0">
+                            Last updated at:
+                            {{
+                                this.$store.state.lastSyncedAt.toLocaleString()
+                            }}
                         </p>
+                        <button class="btn btn-info btn-sm">
+                            Update Now
+                        </button>
                     </div>
                 </div>
+
+                <!-- Word table component -->
+                <word-table-component :words="paginatedWords" />
+
+                <!-- Pagination component -->
                 <pagination-component
-                    :data="words"
+                    :data="filteredWords"
                     :paginate="5"
                     :eachSide="3"
                     serial-key="serialKey"
                     dot-chars="..."
                     @paginatedData="handlePaginatedWords"
                 />
-                <!-- Word table component -->
-                <word-table-component :words="paginatedWords" />
             </div>
         </section>
         <!-- Word Lists End -->
@@ -69,7 +80,7 @@ import HeroSearchComponent from "@/components/frontend/home/header/HeroSearchCom
 import WordTableComponent from "@/components/frontend/home/sections/word/table/WordTableComponent";
 import PaginationComponent from "@/components/frontend/global/PaginationComponent";
 import FooterComponent from "@/components/frontend/home/footer/FooterComponent";
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 export default {
     name: "Home",
     components: {
@@ -81,7 +92,7 @@ export default {
         FooterComponent
     },
     computed: {
-        ...mapState(["words"])
+        ...mapGetters(["filteredWords"])
     },
     data: () => ({
         paginatedWords: []
