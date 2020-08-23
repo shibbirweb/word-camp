@@ -12,7 +12,7 @@
                 </thead>
                 <tbody class="text-center">
                     <tr v-for="(word, index) in words" :key="index">
-                        <td>{{ index + 1 }}</td>
+                        <td>{{ word.serialKey }}</td>
                         <td>{{ word.en }}</td>
                         <td>{{ word.bn }}</td>
                         <td>{{ word.createdAt.toDateString() }}</td>

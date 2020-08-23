@@ -36,10 +36,16 @@
                         </p>
                     </div>
                 </div>
+                <pagination-component
+                    :data="words"
+                    :paginate="5"
+                    :eachSide="3"
+                    serial-key="serialKey"
+                    dot-chars="..."
+                    @paginatedData="handlePaginatedWords"
+                />
                 <!-- Word table component -->
-                <word-table-component :words="words" />
-
-                <pagination-component :data="words" />
+                <word-table-component :words="paginatedWords" />
             </div>
         </section>
         <!-- Word Lists End -->
@@ -76,6 +82,14 @@ export default {
     },
     computed: {
         ...mapState(["words"])
+    },
+    data: () => ({
+        paginatedWords: []
+    }),
+    methods: {
+        handlePaginatedWords(words) {
+            this.paginatedWords = words;
+        }
     }
 };
 </script>
