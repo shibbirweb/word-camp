@@ -51,7 +51,7 @@
                 <!-- Pagination component -->
                 <pagination-component
                     :data="filteredWords"
-                    :paginate="5"
+                    :paginate="25"
                     :eachSide="3"
                     serial-key="serialKey"
                     dot-chars="..."
