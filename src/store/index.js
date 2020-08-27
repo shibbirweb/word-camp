@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import state from './state'
 import * as mutations from './mutations'
 import * as getters from './getters'
+import words from './modules/words/index'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -10,5 +11,8 @@ export default new Vuex.Store({
     getters,
     mutations,
     actions: {
+    },
+    modules: {
+        words
     }
 })

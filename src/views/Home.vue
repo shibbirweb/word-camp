@@ -36,7 +36,7 @@
                         <p class="small m-0">
                             Last updated at:
                             {{
-                                this.$store.state.lastSyncedAt.toLocaleString()
+                                this.$store.state.words.lastSyncedAt.toLocaleString()
                             }}
                         </p>
                         <button class="btn btn-info btn-sm">
@@ -92,7 +92,7 @@ export default {
         FooterComponent
     },
     computed: {
-        ...mapGetters(["filteredWords"])
+        ...mapGetters("words", ["filteredWords"])
     },
     data: () => ({
         paginatedWords: []

@@ -50,22 +50,22 @@ import { mapGetters } from "vuex";
 export default {
     name: "HeroSearchComponent",
     computed: {
-        ...mapGetters(["filteredWords"]),
+        ...mapGetters("words", ["filteredWords"]),
         greetingText() {
             return "Welcome to " + this.$env.VUE_APP_SITE_TITLE + "...";
         },
         searchKeyword: {
             get() {
-                return this.$store.state.searchKeyword;
+                return this.$store.state.words.searchKeyword;
             },
             set(value) {
-                this.$store.commit("updateSearchText", value);
+                this.$store.commit("words/updateSearchText", value);
             }
         }
     },
     methods: {
         formSubmitHandler() {
-            this.$store.commit("updateSearchText", this.searchKeyword);
+            this.$store.commit("words/updateSearchText", this.searchKeyword);
         }
     }
 };
