@@ -46,29 +46,29 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex'
 export default {
-    name: "HeroSearchComponent",
+    name: 'HeroSearchComponent',
     computed: {
-        ...mapGetters("words", ["filteredWords"]),
-        greetingText() {
-            return "Welcome to " + this.$env.VUE_APP_SITE_TITLE + "...";
+        ...mapGetters('words', ['filteredWords']),
+        greetingText () {
+            return 'Welcome to ' + this.$env.VUE_APP_SITE_TITLE + '...'
         },
         searchKeyword: {
-            get() {
-                return this.$store.state.words.searchKeyword;
+            get () {
+                return this.$store.state.words.searchKeyword
             },
-            set(value) {
-                this.$store.commit("words/updateSearchText", value);
+            set (value) {
+                this.$store.commit('words/updateSearchText', value)
             }
         }
     },
     methods: {
-        formSubmitHandler() {
-            this.$store.commit("words/updateSearchText", this.searchKeyword);
+        formSubmitHandler () {
+            this.$store.commit('words/updateSearchText', this.searchKeyword)
         }
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
