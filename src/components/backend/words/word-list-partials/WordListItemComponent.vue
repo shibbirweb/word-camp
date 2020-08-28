@@ -1,6 +1,6 @@
 <template>
     <div class="list-group-item">
-        <component :is="showComponent" @isEditState="updateState" />
+        <component :is="showComponent" @isEditState="updateState" :word="word" />
     </div>
 </template>
 
@@ -9,6 +9,12 @@ import ShowWordComponent from "./ShowWordComponent";
 import EditFormWordComponent from "./EditFormWordComponent";
 export default {
     name: "WordListItemComponent",
+    props: {
+        word: {
+            type: Object,
+            required: true
+        }
+    },
     components: {
         ShowWordComponent,
         EditFormWordComponent

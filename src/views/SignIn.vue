@@ -10,19 +10,22 @@
                             </h2>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form @submit.prevent="signInFormHandler">
                                 <div class="mb-3">
                                     <label for="email" class="form-label"
                                         >Email address</label
                                     >
                                     <input
                                         type="email"
+                                        v-model="form.email"
                                         class="form-control"
                                         id="email"
                                         placeholder="Enter email address"
                                         aria-describedby="emailHelp"
                                         autofocus
                                         autocomplete="off"
+                                        required
+                                        :disabled="loading"
                                     />
                                     <div id="emailHelp" class="form-text">
                                         We'll never share your email with anyone
@@ -35,18 +38,32 @@
                                     >
                                     <input
                                         type="password"
+                                        v-model="form.password"
                                         class="form-control"
                                         id="password"
                                         placeholder="Enter password"
+                                        required
+                                        :disabled="loading"
                                     />
                                 </div>
-
                                 <button
                                     type="submit"
-                                    class="btn btn-info btn-block"
+                                    class="btn btn-info btn-block d-flex justify-content-center align-items-center"
+                                    :disabled="loading"
                                 >
+                                    <span
+                                        v-if="loading"
+                                        class="spinner-border spinner-border-sm mr-1"
+                                        role="status"
+                                        aria-hidden="true"
+                                    ></span>
                                     Submit
                                 </button>
+                                <p
+                                    class="my-0 mt-2 text-center small text-danger"
+                                >
+                                    {{ error }}
+                                </p>
                             </form>
                         </div>
 
@@ -61,12 +78,45 @@
 </template>
 
 <script>
+import { auth } from "../config/firebase";
 export default {
     name: "SignIn",
     computed: {
         footerText() {
             const date = new Date();
             return this.$env.VUE_APP_AUTHOR_NAME + " " + date.getFullYear();
+        }
+    },
+    data: () => ({
+        form: {
+            email: null,
+            password: null
+        },
+        error: null,
+        loading: false
+    }),
+    methods: {
+        async signInFormHandler() {
+            if (!this.form.email || !this.form.password) {
+                alert("Email and password is required");
+                return;
+            }
+
+            this.error = null;
+            this.loading = true;
+
+            try {
+                await auth.signInWithEmailAndPassword(
+                    this.form.email,
+                    this.form.password
+                );
+                this.$router.replace(
+                    this.$route.query.redirect || { name: "Dashboard" }
+                );
+            } catch (error) {
+                this.error = "Username or password did not match";
+                this.loading = false;
+            }
         }
     }
 };

@@ -52,7 +52,7 @@
             </h6>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="#" @click.prevent="signOut">
                         <span data-feather="file-text"></span>
                         Sign Out
                     </a>
@@ -63,8 +63,19 @@
 </template>
 
 <script>
+import { auth } from "@/config/firebase";
 export default {
-    name: "SideNavbarComponent"
+    name: "SideNavbarComponent",
+    methods: {
+        async signOut() {
+            try {
+                await auth.signOut();
+                this.$router.push({ name: "Home" });
+            } catch (error) {
+                alert("Somthing went wrong. Try again later");
+            }
+        }
+    }
 };
 </script>
 

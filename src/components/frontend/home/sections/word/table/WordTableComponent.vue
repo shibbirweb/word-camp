@@ -20,7 +20,7 @@
                         <td>{{ word.serialKey }}</td>
                         <td>{{ word.en }}</td>
                         <td>{{ word.bn }}</td>
-                        <td>{{ word.createdAt.toDateString() }}</td>
+                        <td>{{ dateFormat(word.createdAt) }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -35,6 +35,19 @@ export default {
         words: {
             type: Array,
             required: true
+        }
+    },
+    methods: {
+        dateFormat(timestamp) {
+            let date;
+
+            try {
+                date = new Date(timestamp.seconds * 1000).toDateString();
+            } catch (error) {
+                date = "Not available";
+            }
+
+            return date;
         }
     }
 };

@@ -39,7 +39,10 @@
                                 this.$store.state.words.lastSyncedAt.toLocaleString()
                             }}
                         </p>
-                        <button class="btn btn-info btn-sm">
+                        <button
+                            class="btn btn-info btn-sm"
+                            @click.prevent="fetchWords"
+                        >
                             Update Now
                         </button>
                     </div>
@@ -80,7 +83,7 @@ import HeroSearchComponent from "@/components/frontend/home/header/HeroSearchCom
 import WordTableComponent from "@/components/frontend/home/sections/word/table/WordTableComponent";
 import PaginationComponent from "@/components/frontend/global/PaginationComponent";
 import FooterComponent from "@/components/frontend/home/footer/FooterComponent";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
     name: "Home",
     components: {
@@ -98,6 +101,7 @@ export default {
         paginatedWords: []
     }),
     methods: {
+        ...mapActions("words", ["fetchWords"]),
         handlePaginatedWords(words) {
             this.paginatedWords = words;
         }
