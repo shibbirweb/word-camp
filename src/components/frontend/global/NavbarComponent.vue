@@ -32,7 +32,16 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link :to="{ name: 'SignIn' }" class="nav-link"
+                        <router-link
+                            v-if="currentUser"
+                            :to="{ name: 'Dashboard' }"
+                            class="nav-link"
+                            >Dashboard</router-link
+                        >
+                        <router-link
+                            v-else
+                            :to="{ name: 'SignIn' }"
+                            class="nav-link"
                             >Sign In</router-link
                         >
                     </li>
@@ -43,9 +52,11 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
     name: "NavbarComponent",
     computed: {
+        ...mapState("authentication", ["currentUser"]),
         navTitle() {
             return this.$env.VUE_APP_SITE_TITLE;
         }
