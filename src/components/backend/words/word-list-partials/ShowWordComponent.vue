@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h5>{{ word.serialKey }}. {{ word.en }} ({{ word.bn }})</h5>
-        <p class="mb-0" v-text="word.description" />
+        <h6>{{ word.serialKey }}. {{ word.en }} ({{ word.bn }})</h6>
+        <p class="mb-0 small" v-text="word.description" />
         <div class="mt-2 d-flex">
             <button
                 type="button"

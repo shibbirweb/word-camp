@@ -8,7 +8,7 @@
             </div>
 
             <div class="col-lg-10 offset-lg-1 mt-3 table-responsive">
-                <div class="card">
+                <div class="card shadow-sm">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-4">
@@ -37,6 +37,10 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <p class="small">
+                            Last Updated :
+                            {{ this.$store.state.words.lastSyncedAt }}
+                        </p>
                         <!-- Word List Start -->
                         <word-list-component :words="paginatedWords" />
                         <!-- Word List End -->

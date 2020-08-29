@@ -2,7 +2,14 @@ export const updateSearchText = (state, payload) => {
     state.searchKeyword = payload
 }
 export const mutationUpdateLastSync = (state) => {
-    state.lastSyncedAt = new Date()
+    const date = new Date()
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timezone: 'UTC+6'
+    }
+    state.lastSyncedAt = date.toLocaleDateString('en-GB', options) + ' ' + date.toLocaleTimeString('en-US')
 }
 export const updateBackendSearchKeyword = (state, payload) => {
     state.backendSearchKeyword = payload

@@ -34,10 +34,8 @@
                         class="col-12 d-flex justify-content-between align-items-center my-2"
                     >
                         <p class="small m-0">
-                            Last updated at:
-                            {{
-                                this.$store.state.words.lastSyncedAt.toLocaleString()
-                            }}
+                            Last updated:
+                            {{ this.$store.state.words.lastSyncedAt }}
                         </p>
                         <button
                             class="btn btn-info btn-sm"

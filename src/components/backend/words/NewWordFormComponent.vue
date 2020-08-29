@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card shadow-sm">
         <div class="card-header text-center">
             Add new Word
         </div>
@@ -71,9 +71,9 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 export default {
-    name: 'NewWordFormComponent',
+    name: "NewWordFormComponent",
     data: () => ({
         form: {
             bn: null,
@@ -84,32 +84,32 @@ export default {
         successMessage: null
     }),
     methods: {
-        ...mapActions('words', ['saveNewWord']),
-        resetForm () {
-            this.form.en = null
-            this.form.bn = null
-            this.form.description = null
+        ...mapActions("words", ["saveNewWord"]),
+        resetForm() {
+            this.form.en = null;
+            this.form.bn = null;
+            this.form.description = null;
         },
-        async saveNewWordHandler () {
-            this.successMessage = null
+        async saveNewWordHandler() {
+            this.successMessage = null;
             if (!this.form.bn || !this.form.en) {
-                alert('Enter bangla and english word')
-                return
+                alert("Enter bangla and english word");
+                return;
             }
 
-            this.loading = true
+            this.loading = true;
 
-            const word = { ...this.form }
+            const word = { ...this.form };
             try {
-                await this.saveNewWord(word)
-                this.resetForm()
-                this.successMessage = 'Word saved successfully'
+                await this.saveNewWord(word);
+                this.resetForm();
+                this.successMessage = "Word saved successfully";
             } catch (error) {}
 
-            this.loading = false
+            this.loading = false;
         }
     }
-}
+};
 </script>
 
 <style></style>
