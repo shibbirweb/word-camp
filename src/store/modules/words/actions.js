@@ -30,6 +30,7 @@ export const updateWord = async ({ state, commit, rootState }, payload) => {
     const data = { ...word }
     data.en = payload.en
     data.bn = payload.bn
+    data.description = payload.description
     data.updatedAt = Timestamp.fromDate(new Date())
     data.lastModifiedBy = rootState.authentication.currentUser.uid
     await wordCollection.doc(data.uid).set(data, { merge: true })
