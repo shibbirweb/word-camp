@@ -7,6 +7,9 @@
                         <th>Serial</th>
                         <th>English</th>
                         <th>Bangla</th>
+                        <th>Synonyms</th>
+                        <th>Antonyms</th>
+                        <th>Sentence</th>
                         <th>Added On</th>
                     </tr>
                 </thead>
@@ -20,6 +23,9 @@
                         <td>{{ word.serialKey }}</td>
                         <td>{{ word.en }}</td>
                         <td>{{ word.bn }}</td>
+                        <td>{{ word.synonyms }}</td>
+                        <td>{{ word.antonyms }}</td>
+                        <td>{{ word.sentence }}</td>
                         <td>{{ dateFormat(word.createdAt) }}</td>
                     </tr>
                 </tbody>

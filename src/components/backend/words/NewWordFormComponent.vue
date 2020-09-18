@@ -34,6 +34,45 @@
                     />
                 </div>
                 <div class="mb-3">
+                    <label for="synonyms" class="form-label"
+                        >Synonyms</label
+                    >
+                    <input
+                        type="text"
+                        v-model="form.synonyms"
+                        class="form-control form-control-sm"
+                        id="synonyms"
+                        placeholder="Example: Notepad"
+                        :disabled="loading"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="antonyms" class="form-label"
+                        >Antonyms</label
+                    >
+                    <input
+                        type="text"
+                        v-model="form.antonyms"
+                        class="form-control form-control-sm"
+                        id="antonyms"
+                        placeholder="Example: Arrive"
+                        :disabled="loading"
+                    />
+                </div>
+                <div class="mb-3">
+                    <label for="sentence" class="form-label"
+                        >Sentence</label
+                    >
+                    <input
+                        type="text"
+                        v-model="form.sentence"
+                        class="form-control form-control-sm"
+                        id="sentence"
+                        placeholder="Example: This is a book"
+                        :disabled="loading"
+                    />
+                </div>
+                <div class="mb-3">
                     <label for="description" class="form-label"
                         >Description</label
                     >
@@ -78,6 +117,9 @@ export default {
         form: {
             bn: null,
             en: null,
+            synonyms: null,
+            antonyms: null,
+            sentence: null,
             description: null
         },
         loading: false,
@@ -88,6 +130,9 @@ export default {
         resetForm() {
             this.form.en = null;
             this.form.bn = null;
+            this.form.synonyms = null;
+            this.form.antonyms = null;
+            this.form.sentence = null;
             this.form.description = null;
         },
         async saveNewWordHandler() {

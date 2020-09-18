@@ -30,6 +30,9 @@ export const updateWord = async ({ state, commit, rootState }, payload) => {
     const data = { ...word }
     data.en = payload.en
     data.bn = payload.bn
+    data.synonyms = payload.synonyms
+    data.antonyms = payload.antonyms
+    data.sentence = payload.sentence
     data.description = payload.description
     data.updatedAt = Timestamp.fromDate(new Date())
     data.lastModifiedBy = rootState.authentication.currentUser.uid
